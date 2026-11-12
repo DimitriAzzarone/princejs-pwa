@@ -1,0 +1,31 @@
+name: Build Prince of Persia Android
+on:
+  workflow_dispatch:
+  push:
+    branches: [android-apk]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - uses: android-actions/setup-android@v3
+      - name: Bundle and check original HTML
+        run: |
+          python3 tools/bundle_game.py
+          python3 tools/check_bundle.py
+          node tools/check_speech.cjs
+      - name: Compile APK
+        working-directory: android
+        run: gradle assembleRelease --stacktrace
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Prince-of-Persia-Android-1.0-unsigned
+          path: android/app/build/outputs/apk/release/app-release-unsigned.apk
+          if-no-files-found: error
