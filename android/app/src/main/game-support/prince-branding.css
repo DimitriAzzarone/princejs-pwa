@@ -1,0 +1,17 @@
+/* Original Prince of Persia wordmark from the game's own title atlas. */
+.android-prince-logo {
+  width:272px;height:65px;flex-shrink:0;display:block;margin:0 auto 12px;
+  background-image:url('prince-title-atlas.png');
+  background-position:-482px -2px;background-repeat:no-repeat;
+  image-rendering:pixelated;
+}
+#family-launcher .family-card {
+  max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);
+  overflow-y:auto!important;padding:16px 20px!important;
+}
+#family-launcher h1 {font-size:clamp(18px,3vw,28px);}
+@media(max-height:420px) {
+  .android-prince-logo{margin-bottom:8px;}
+  #family-launcher .family-card h2{margin-bottom:8px;font-size:16px;}
+  #family-launcher .family-card p{font-size:13px;line-height:1.35;}
+}

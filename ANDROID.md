@@ -23,3 +23,7 @@ Poi, nella cartella android, eseguire Gradle 8.9 con Java 17 e Android SDK 35:
 Il workflow produce un APK release non firmato, che viene firmato per la consegna con la chiave dedicata dell'app conservata fuori dal repository. Non pubblicare chiave o password nei sorgenti. Gli aggiornamenti devono riutilizzare la stessa firma e aumentare versionCode.
 
 Identificativo Android: com.dimitriazzarone.princeofpersia. Versione iniziale: 1.0, codice 1. Sorgente HTML e risorse originali mantengono le rispettive attribuzioni e licenze; il contenitore non modifica la titolarità dei materiali del gioco.
+
+## Logo del gioco
+
+La schermata iniziale dell'APK mostra il logo originale Prince of Persia recuperato dall'atlante grafico già incorporato nell'HTML. Le immagini del gioco restano incluse e l'icona Android riprende l'icona PoP della PWA. Non sono state scaricate immagini da fonti esterne. La scheda iniziale scorre sui display bassi per mantenere raggiungibile il pulsante di avvio.
