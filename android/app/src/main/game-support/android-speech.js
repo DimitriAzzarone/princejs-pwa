@@ -20,7 +20,18 @@
     const u=current.utterance;
     PrinceSpeech.speak(current.id,u.text,Number(u.rate)||1,Number(u.pitch)||1,Number(u.volume)||0);
   }
+  const listeners=new Map();
   const synthesis = {
+    addEventListener(type,listener) {
+      if(!listeners.has(type))listeners.set(type,new Set());
+      listeners.get(type).add(listener);
+    },
+    removeEventListener(type,listener) {listeners.get(type)?.delete(listener);},
+    dispatchEvent(event) {
+      for(const listener of listeners.get(event.type)||[]) listener.call(this,event);
+      const handler=this['on'+event.type];if(typeof handler==='function')handler.call(this,event);
+      return true;
+    },
     getVoices:()=>[voice],
     speak(utterance) {queue.push({id:'pjs-'+(++sequence),utterance});drain();},
     cancel() {queue=[];current=null;paused=false;PrinceSpeech.stop();},
@@ -47,4 +58,5 @@
   };
   window.SpeechSynthesisUtterance=Utterance;
   Object.defineProperty(window,'speechSynthesis',{value:synthesis});
+  setTimeout(()=>synthesis.dispatchEvent({type:'voiceschanged'}),0);
 })();

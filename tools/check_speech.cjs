@@ -1,5 +1,5 @@
 const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/strict');
-const calls=[];const context={PrinceSpeech:{speak:(...args)=>calls.push(args),stop:()=>calls.push(['stop'])}};
+const calls=[];const context={setTimeout:()=>{},PrinceSpeech:{speak:(...args)=>calls.push(args),stop:()=>calls.push(['stop'])}};
 context.window=context;
 vm.runInNewContext(fs.readFileSync('android/app/src/main/game-support/android-speech.js','utf8'),context);
 const synth=context.speechSynthesis;
@@ -17,3 +17,9 @@ synth.resume();assert.equal(calls.filter(x=>x.length>1).length,3,'resume the cur
 synth.cancel();assert.equal(synth.speaking,false);assert.equal(synth.pending,false);
 context.__princeSpeechEvent('pjs-2','end');assert.equal(finished,1,'ignore stale completion after cancel');
 console.log('Android narration queue checks passed');
+
+let voicesChanged=0;const listener=()=>voicesChanged++;
+synth.addEventListener('voiceschanged',listener);
+synth.dispatchEvent({type:'voiceschanged'});assert.equal(voicesChanged,1);
+synth.removeEventListener('voiceschanged',listener);
+synth.dispatchEvent({type:'voiceschanged'});assert.equal(voicesChanged,1);

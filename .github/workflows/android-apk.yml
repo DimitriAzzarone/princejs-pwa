@@ -16,6 +16,8 @@ jobs:
         with:
           gradle-version: '8.9'
       - uses: android-actions/setup-android@v3
+        with:
+          packages: ''
       - name: Bundle and check original HTML
         run: |
           python3 tools/bundle_game.py
