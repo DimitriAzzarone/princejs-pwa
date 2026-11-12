@@ -197,7 +197,7 @@ public final class MainActivity extends Activity {
     @Override public void onBackPressed() {
         if (fullscreen != null) { hideFullscreen(); return; }
         new AlertDialog.Builder(this).setTitle("Uscire dal gioco?")
-                .setMessage("Puoi riprendere più tardi riaprendo l'app.")
+                .setMessage("Adattamento Android — Creato da Dimitri Azzarone. Le opzioni di salvataggio restano quelle del gioco.")
                 .setPositiveButton("Esci", (dialog, which) -> finish())
                 .setNegativeButton("Continua", null).show();
     }

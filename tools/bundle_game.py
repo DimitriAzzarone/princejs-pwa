@@ -17,7 +17,7 @@ resources=json.loads(raw.group(1))
 (assets/'prince-title-atlas.png').write_bytes(base64.b64decode(resources['assets/gfx/title.png']['b']))
 shutil.copyfile(root/'android/app/src/main/game-support/prince-branding.css',assets/'prince-branding.css')
 assert html.count('<div class="family-card"><h1>')==1
-html=html.replace('<div class="family-card"><h1>', '<div class="family-card"><div class="android-prince-logo" role="img" aria-label="Prince of Persia"></div><h1>',1)
+html=html.replace('<div class="family-card"><h1>', '<div class="family-card"><div class="android-prince-logo" role="img" aria-label="Prince of Persia"></div><p class="android-author"><span>Adattamento Android</span><br>Creato da Dimitri Azzarone</p><h1>',1)
 html=html.replace('</head>','<link rel="stylesheet" href="prince-branding.css"></head>',1)
 (assets/'index.html').write_text(html)
 for name in ['icon-192.png','icon-512.png','apple-touch-icon.png','favicon-32.png']:

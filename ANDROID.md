@@ -27,3 +27,7 @@ Identificativo Android: com.dimitriazzarone.princeofpersia. Versione iniziale: 1
 ## Logo del gioco
 
 La schermata iniziale dell'APK mostra il logo originale Prince of Persia recuperato dall'atlante grafico già incorporato nell'HTML. Le immagini del gioco restano incluse e l'icona Android riprende l'icona PoP della PWA. Non sono state scaricate immagini da fonti esterne. La scheda iniziale scorre sui display bassi per mantenere raggiungibile il pulsante di avvio.
+
+## Versione 1.1
+
+Nuova icona dalla schermata del titolo fornita dall’utente, ripulita dai comandi touch e dalle sovrapposizioni. La schermata di avvio riporta “Adattamento Android — Creato da Dimitri Azzarone”. I crediti originali del gioco restano conservati. Stesso identificativo e firma della versione 1.0 per aggiornare senza disinstallare.
